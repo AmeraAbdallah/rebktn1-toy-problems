@@ -31,3 +31,14 @@ function zeroSum(arr){
     return false; // O(n) + O(n) = O(n)
 }
 
+//another sollution
+function zeroSum(arr){
+    let col = {};
+    for(let i = 0; i < arr.length; i++){ // O(n)
+        col[arr[i]] = true;
+    }
+    for(let key in col){ // O(n)
+        if(col[key * -1]) return true;
+    }
+    return false; // O(n) + O(n) = O(n)
+}
