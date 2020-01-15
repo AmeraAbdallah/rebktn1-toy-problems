@@ -42,6 +42,9 @@ function arrayCaption(array){
                 result.push(levelDeep);
             }
         }
+        if(!Array.isArray(array[i]) && array[i]){
+            result.push(1);
+        }
     }
     return Math.max(...result);
 }
