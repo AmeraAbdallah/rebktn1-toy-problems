@@ -87,3 +87,10 @@ Tree.prototype.removeChild = function(child) {
     throw new Error('That node is not an immediate child of this tree');
   }
 };
+
+Tree.prototype.countLeaves = function( count= 0) {
+  for(let i = 0; i < this.children.length; i++){
+    return this.children[i].countLeaves(++count);
+  }
+  return count;
+}
