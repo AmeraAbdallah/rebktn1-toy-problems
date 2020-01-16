@@ -9,4 +9,17 @@ primeTester(1) // false
 
 */
 
-function primeTester(n) {}
+function primeTester(n) {
+    if(n === 1) return false;
+    let numbers = [2, 3, 4, 5, 6, 7, 8, 9];
+
+    for(let i = 0; i < numbers.length; i++){
+        if(n !== numbers[i]) {
+            if(Math.floor(n / numbers[i]) === n/numbers[i]){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
