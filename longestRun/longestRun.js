@@ -12,7 +12,6 @@ longestRun("abcdefgh") // [ 0, 0 ]
 longestRun("abccccccc") // [ 2, 8 ]
 */
 
-<<<<<<< HEAD
 function longestRun(string, result = {}, i = 0, next= 0,  current = string[0]) {
     if(string.length === 0){
         let max = [0, 0];
@@ -34,8 +33,3 @@ function longestRun(string, result = {}, i = 0, next= 0,  current = string[0]) {
     }
     return longestRun(string, result, ++i, next);
 }
-=======
-
-
-
->>>>>>> 95af5ca94c596181a543f52fbc950149d417307f
