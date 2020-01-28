@@ -17,7 +17,25 @@ powerSet("ab") // [ "", "a", "ab", "b" ]
 powerSet("obama") // [ "", "a", "ab", "abm", "abmo", "abo", "am", "amo", "ao", "b", "bm", "bmo", "bo", "m", "mo", "o" ]
 powerSet("horse") // [ "", "e", "eh", "eho", "ehor", "ehors", "ehos", "ehr", "ehrs", "ehs", "eo", "eor", "eors", "eos", "er", "ers", "es", "h", "ho", "hor", "hors", "hos", "hr", "hrs", "hs", "o", "or", "ors", "os", "r", "rs", "s" ]
 */
+function generate(array, i = 0, result = []) {
+  if(array.length === 0){
+    return result;
+  }
+  i;
+  let current = array[i];
+  console.log(current)
+  array = array.slice(++i)
+  console.log(array)
+  result.push(current);
+  for(let j= 0; j< array.length; j++){
+    result.push(current+array[j]);
+  }
+  return generate(array, i, result)
+}
 
 function powerSet(string) {
-  // your code here...
+  let sorted = string.split('').sort();
+  let unique = new Set(sorted);
+  
+  return generate([...unique]);
 }
