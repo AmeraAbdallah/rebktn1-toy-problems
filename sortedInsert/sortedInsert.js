@@ -47,5 +47,38 @@ Stack.prototype.pop = function() {
 };
 
 function sortedInsert(stack, element) {
-  // your code here...
+  let counterHolder = null;
+  let elementHolder = null;
+  for(let i = 1; i <= stack.count; i++){
+    if(element > stack.store[i] && element < stack.store[i+1]){
+      counterHolder = i;
+      elementHolder = stack.store[i];
+      stack.store[i] = element;
+      break;
+    } else if(i === 1 && element < stack.store[i]){
+      counterHolder = i;
+      elementHolder = stack.store[i];
+      stack.store[i] = element;
+      break;
+    }
+  }
+  if(counterHolder){
+    counterHolder = counterHolder;
+    if(counterHolder === 1){  //edge case 
+      counterHolder = 2;
+    }
+    stack.count++;
+    for(let i = counterHolder; i <= stack.count; i++){
+      let holder = stack.store[i];
+      stack.store[i] = elementHolder;
+      elementHolder = holder;
+    }
+  }
+  return stack;
 }
+
+let stack = new Stack(3);
+stack.push(4);
+stack.push(6);
+sortedInsert(stack, 5);
+sortedInsert(stack, 1);
