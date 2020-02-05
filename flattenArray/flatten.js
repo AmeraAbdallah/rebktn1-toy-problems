@@ -7,6 +7,15 @@ Example:
 flatten([[1, 1], [4], 3, [3], 4, [6, 7]]) // [1, 1, 4, 3, 3, 4, 6, 7]
 */
 
-function flatten(arr) {
-  // your code here...
+function flatten(arr, result = []) {
+  for(let i = 0; i < arr.length; i++){
+    if(Array.isArray(arr[i])){
+        flatten(arr[i], result);
+    } else {
+      result.push(arr[i]);
+    }
+  }
+  return result
 }
+
+flatten([[1, 1], [4], 3, [3], 4, [6, 7]]);
