@@ -11,5 +11,17 @@ toMilitary("04:00") // "04:00"
 */
 
 function toMilitary(time) {
-  // your code here...
+  if(time === "12:00am") return "00:00"; //edge case
+  else if(time.endsWith('pm')){
+    return time.slice(0, time.length - 2).split(':').map((element, i) => {
+      if(i === 0){
+        return parseInt(element) + 12;
+      } 
+      return element;
+    }).join(':');
+  } else if(time.endsWith('am')){
+    return time.slice(0, time.length - 2);
+  } else {
+    return time;
+  }
 }
