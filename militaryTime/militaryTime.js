@@ -11,8 +11,7 @@ toMilitary("04:00") // "04:00"
 */
 
 function toMilitary(time) {
-  if(time === "12:00am") return "00:00"; //edge case
-  else if(time.endsWith('pm')){
+  if(time.endsWith('pm')){
     return time.slice(0, time.length - 2).split(':').map((element, i) => {
       if(i === 0){
         return parseInt(element) + 12;
@@ -20,8 +19,14 @@ function toMilitary(time) {
       return element;
     }).join(':');
   } else if(time.endsWith('am')){
+    if(time.startsWith('12')) return "00" + time.slice(2,time.length - 2);  //edge case
     return time.slice(0, time.length - 2);
   } else {
     return time;
   }
 }
+
+toMilitary("3:00pm") // "15:00"
+toMilitary("9:15am") // "09:15"
+toMilitary("12:00am") // "00:00"
+toMilitary("04:00") // "04:00"
