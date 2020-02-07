@@ -24,10 +24,14 @@ function volume(heights) {
   let result = 0;
   for(let i = 1; i < heights.length-1; i++) {
     if(heights[i] === 0){
-      if(heights[i+1] === 0) { 
-        result += (heights[i-1] < heights[i+2]) ? heights[i-1] * 2 : heights[i+2] * 2; 
+      let counter = 1;
+      let condition = heights[i+1] === 0;
+      while(condition) { 
+        counter++;
+        condition = heights[i+counter] === 0;
       }
-      else result += (heights[i-1] < heights[i+1]) ? heights[i-1] : heights[i+1];
+      result += (heights[i-1] < heights[i+counter]) ? heights[i-1] * counter : heights[i+counter] * counter;
+      i += counter;
     }
   }
   return result;
