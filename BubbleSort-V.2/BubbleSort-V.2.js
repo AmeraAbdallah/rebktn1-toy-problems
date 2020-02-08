@@ -15,8 +15,34 @@
 // input: [ 20, -10, -10, 2, 4, 299 ]
 // Output:	[ -10, -10, 2, 4, 20, 299 ]
 
+//Algorithm from wikipedia
+// procedure bubbleSort(A : list of sortable items)
+//     n := length(A)
+//     repeat
+//         newn := 0
+//         for i := 1 to n - 1 inclusive do
+//             if A[i - 1] > A[i] then
+//                 swap(A[i - 1], A[i])
+//                 newn := i
+//             end if
+//         end for
+//         n := newn
+//     until n ≤ 1
+// end procedure
+
 
 function bubbleSort(input) {
-    // Write your code here, and
-    // return your final answer.
+    let n = input.length;
+    let newN = 0;
+    for(let i = 0; i < n-1; i++){
+        if (input[i - 1] > input[i]) {
+            [input[i-1], input[i]] = [input[i], input[i-1]];
+            newN = i;
+        }
+    }
+    n = newN;
+    if(n > 1){
+        return bubbleSort(input)
+    }
+    return input;
 }
