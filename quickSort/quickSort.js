@@ -22,7 +22,41 @@ Extra Credit: Perform the sort in place. Watch how at https://www.youtube.com/wa
 
 NOTE: DO NOT use JavaScript’s built-in sorting function (Array.prototype.sort).
 */
+/*
+algorithm quicksort(A, lo, hi) is
+    if lo < hi then
+        p := partition(A, lo, hi)
+        quicksort(A, lo, p - 1)
+        quicksort(A, p + 1, hi)
 
-function quickSort(arr) {
+algorithm partition(A, lo, hi) is
+    pivot := A[hi]
+    i := lo
+    for j := lo to hi do
+        if A[j] < pivot then
+            swap A[i] with A[j]
+            i := i + 1
+    swap A[i] with A[hi]
+    return i
+*/
+function quickSort(A, lo, hi) {
   // your code here...
+  if(lo < hi){
+    let p = partition(A, lo, hi);
+    quicksort(A, lo, p - 1)
+    quicksort(A, p + 1, hi)
+  }
+}
+
+function partition(A, lo, hi) {
+  let pivot = A[hi];
+  let i = lo;
+  for( let j = lo; lo <= hi; j++){
+    if(A[j] < pivot) {
+      [A[i], A[j]] = [A[j], A[i]];
+      i = i + 1;
+    }
+  }
+  [A[i], A[hi]] = [A[hi], A[i]];
+  return i;
 }
