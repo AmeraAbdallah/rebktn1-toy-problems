@@ -25,8 +25,6 @@ const DIGIT_VALUES = {
   };
 
 function translateRomanNumeral (romanNumeral) {
-    // Write your code here, and
-    // return your final answer.
     if(typeof romanNumeral !== 'string') return null;
     result = 0;
     for(let i = 0; i < romanNumeral.length; i = i + 2) {
