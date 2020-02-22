@@ -16,5 +16,12 @@
 
 
 function binaryToDecimal (n) {
-// code gose here 
+    let stringN = n.toString().split('').reverse().join('');
+    let decimal = 0;
+    for(let i = 0; i < stringN.length; i++){
+        decimal += Number(stringN[i]) * Math.pow(2, i);
+    }
+    return decimal;
 }
+
+binaryToDecimal('1000');
